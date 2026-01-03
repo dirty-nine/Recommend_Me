@@ -4,3 +4,5 @@ https://api.jikan.moe/v4/genres/anime
 get all anime genres and its data as dictionary
 https://api.jikan.moe/v4/anime?genres=1&status=airing&order_by=score&sort=desc&page{pageNum}
 example filtered anime search returns anime objects as dictionary
+https://api.jikan.moe/v4/producers
+get all anime producers and its data as a dictionary
