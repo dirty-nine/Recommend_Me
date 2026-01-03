@@ -1,0 +1,6 @@
+https://api.jikan.moe/v4/random/anime
+returns a random anime as a dictionary of data for it
+https://api.jikan.moe/v4/genres/anime
+get all anime genres and its data as dictionary
+https://api.jikan.moe/v4/anime?genres=1&status=airing&order_by=score&sort=desc&page{pageNum}
+example filtered anime search returns anime objects as dictionary
