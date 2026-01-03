@@ -16,14 +16,20 @@ def chat(sysPrompt, userPrompt = ""):
     return response.candidates[0].content.parts[0].text
 
 '''
-- github/git process to get and save changes. Do type the commands in the terminal:
+[ ] github/git process to get and save changes. Do type the commands in the terminal:
 
-1) get any new changes to ur device. do this FIRST before coding:
+step 0) get the repo onto your decice
+- go to the git tab on vscode
+- click clone repository on vscode
+- file explore will open. select the destination folder for your device where you want the repository to go
+- select ok in file explorer
+- vuwala
+
+step 1) get any new changes to ur device. do this FIRST before coding:
 gitpull
 
-2) push your changes to github. do this after making ANY changes
+step 2) push your changes to github. do this after making ANY changes
 git add .
 git commit -m "laptop changes"
 git push
-
 '''
