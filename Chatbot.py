@@ -29,7 +29,7 @@ step 1) get any new changes to ur device. do this FIRST before coding:
 gitpull
 
 step 2) push your changes to github. do this after making ANY changes
-git add .
+git add . | or | git add fileName.txt
 git commit -m "laptop changes"
 git push
 '''
