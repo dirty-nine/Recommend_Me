@@ -1,19 +1,52 @@
-from google import genai
-client = genai.Client(api_key="AIzaSyAGPcth99hggClOeQRrMMiOguOrkjaGRcM")
 
+# GPT-4 Free API Request
+import requests
+
+def chat(prompt):
+    try:
+        url = "https://xyris.vercel.app/api/llm-models/openai/gpt-4/"
+        headers = {"Content-Type": "application/json"}
         
-def chat(sysPrompt, userPrompt = ""):
-    prompt = [
-    {"role": "system", "content": sysPrompt},
-    ]
-    if userPrompt:
-        prompt.append({"role": "user", "content": userPrompt})
+        response = requests.post(
+            url, 
+            json={"query": prompt}, 
+            headers=headers
+        )
+        response.raise_for_status()
+        
+        return response.json().get("content", "")
+    except requests.RequestException as e:
+        print(f"API Request Error: {e}")
+        return ""
+      
+def dialogue(SYS_PROMPT):
+    chats = [{'role':'system', 'content':SYS_PROMPT}]
+    while True:
+        uP = input("Type Here:\n")
+        sP = f"[Chat History]\n{str(chats)}\n[User Prompt]\n{uP}"
+        response = chat(sP)
+        chats.append({'role':'user', 'content':uP})
+        chats.append({'role':'system', 'content':response})
+        print(response)
     
-    response = client.models.generate_content(
-        model="gemini-2.5-flash", #gemini-2.5-flash also works! but is slower | also can use gemini-2.5-flash-lite
-        contents=str(prompt),
-    )
-    return response.candidates[0].content.parts[0].text
+if __name__ == '__main__':
+    """
+    dialogue with chatbot engaged when file run directly
+    """
+    
+    SYS_PROMPT = "you are a chatbot"
+    
+    chats = [{'role':'system', 'content':SYS_PROMPT}]
+    while True:
+        uP = input("Type Here:\n")
+        sP = f"[Chat History]\n{str(chats)}\n[User Prompt]\n{uP}"
+        response = chat(sP)
+        chats.append({'role':'user', 'content':uP})
+        chats.append({'role':'system', 'content':response})
+        print(response)
+    
+    
+    
 
 '''
 [ ] github/git process to get and save changes. Do type the commands in the terminal:
