@@ -1,7 +1,7 @@
 import requests
 import Chatbot
 
-# pageNum = 1
+# pageNum = 2
 # endpoint = f"https://api.jikan.moe/v4/anime?genres=1&status=airing&order_by=score&sort=desc&page{pageNum}"
 # response = requests.get(endpoint)
 
