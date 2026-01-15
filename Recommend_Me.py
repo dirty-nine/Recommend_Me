@@ -58,7 +58,7 @@ the user's request with that genre.
     sysPrompt += f"\n[Genre List]\n({genreList})"
     return Chatbot.chat(sysPrompt, userPrompt)
 
-def getMalGenres():
+def getMalGenres(): #CONVERT TO GENERATOR FUNCTION!
     genres = []
     listOfData = requests.get("https://api.jikan.moe/v4/genres/anime").json()['data']
     for i in range(len(listOfData)):
