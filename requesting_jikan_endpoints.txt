@@ -4,102 +4,54 @@
 [2] here’s the full “lego set” for building /v4/anime endpoints with filters:
 
 page – which page to request
-
 integer, e.g. ?page=1
-
 limit – how many anime per page (max 25)
-
 integer, e.g. ?limit=25
-
 genres – filter by genre IDs
-
 multiple allowed: ?genres=1,2,10
-
 some common IDs:
-
-1 = Action
-
-2 = Adventure
-
-4 = Comedy
-
-8 = Drama
-
-10 = Fantasy
-
-22 = Mecha
-
-24 = Music
-
-27 = Romance
-
-30 = Sci-Fi
-
-37 = Supernatural
-(full list is bigger, can give full table if you want)
-
+    1 = Action
+    2 = Adventure
+    4 = Comedy
+    8 = Drama
+    10 = Fantasy
+    22 = Mecha
+    24 = Music
+    27 = Romance
+    30 = Sci-Fi
+    37 = Supernatural
+    (full list is bigger)
 genres_exclude – exclude genres by IDs
-
 same format as genres, e.g. ?genres_exclude=4,27
-
 producers – filter by studio/producer IDs
-
 ?producers=2,8 (numeric IDs from MAL)
-
 order_by – what field to sort by
-
 title
-
 score
-
 episodes
-
 members (popularity)
-
 start_date
-
 end_date
-
 created_at (when added to MAL)
-
 id (MAL ID)
-
 sort – ascending or descending
-
 asc
-
 desc
-
 status – airing/complete/upcoming
-
 airing
-
 completed
-
 upcoming
-
 rating – audience rating
-
 g, pg, pg13, r17, r, rx
-
 type – format of anime
-
 tv, movie, ova, special, ona, music
-
 sfw – safe-for-work filter
-
 true or false
-
 letter – filter by starting letter of title
-
 A-Z, or numbers for numeric titles, e.g. ?letter=A
-
 magnet – search by keyword in title
-
 ?q=naruto
-
 producers_exclude – exclude producers by ID
-
 same as producers, e.g. ?producers_exclude=4
 
 
@@ -113,38 +65,39 @@ producers=2,8&
 producers_exclude=4&
 order_by=score&
 sort=desc&
-status=airing&
+status=complete&
 rating=pg13&
 type=tv&
 sfw=true&
 letter=A&
 q=naruto
+(put everything above in one line tho)
 
-(put everything in one line tho)
-broken down:
+above queury broken down:
+    page=1 → first page
+    limit=25 → max 25 results
+    genres=1,10 → include Action & Fantasy
+    genres_exclude=4 → exclude Comedy
+    producers=2,8 → include studios with IDs 2 & 8
+    producers_exclude=4 → exclude studio 4
+    order_by=score&sort=desc → highest score first
+    status=airing → only currently airing
+    rating=pg13 → target audience
+    type=tv → only TV series
+    sfw=true → safe for work only
+    letter=A → title starts with A
+    q=naruto → keyword search
 
-page=1 → first page
+---------------------------------
+[4] https://myanimelist.net/animelist/-Nuance/load.json?status=7&offset=0
+the status codes:
+    1: currently watching
+    2: completed
+    3: on hold
+    4: dropped
+    6: plan to watch
+    7: all anime (the whole hoard)
+offset:
+    mal makes each page show 300 entries, so get next page by doing +300
 
-limit=25 → max 25 results
-
-genres=1,10 → include Action & Fantasy
-
-genres_exclude=4 → exclude Comedy
-
-producers=2,8 → include studios with IDs 2 & 8
-
-producers_exclude=4 → exclude studio 4
-
-order_by=score&sort=desc → highest score first
-
-status=airing → only currently airing
-
-rating=pg13 → target audience
-
-type=tv → only TV series
-
-sfw=true → safe for work only
-
-letter=A → title starts with A
-
-q=naruto → keyword search
+    
